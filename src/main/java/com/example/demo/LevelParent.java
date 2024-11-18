@@ -74,6 +74,7 @@ public abstract class LevelParent extends Observable {
 	}
 
 	public void goToNextLevel(String levelName) {
+		user.destroy(); //all actors are removed and destroyed except user, so destroy user before next level to fix high memory usage on level up
 		setChanged();
 		notifyObservers(levelName);
 	}
