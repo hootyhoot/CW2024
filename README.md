@@ -1,9 +1,7 @@
 ## TODO
 - bullets now come out of userplane wrong, offset (solved by adjusting offset in Userplane class)
-- Memory usage high when leveling up (solved by destroying userplane instance in LevelParent gotolevel function)
 - hard coupling (D in SOLID) splitting classes
 - split controllers based on function, UI, game
-- coding conventions for var and field names (Bob's C^3 10 RULES week 13 slides)
 - javadocs over each class and method
 - 5-7 tests min (game logic not gui eg testing data comms between functions, conditions for level up)
 - add playable level(s)
@@ -17,6 +15,7 @@
 # Implemented and Working Correctly
 - UserPlane can move left, right, up, down
 - All sprites cropped to adjust hitboxes
+- Shield capability for boss
 
 # Implemented but Not Working Correctly
 
@@ -33,31 +32,31 @@
 - image misreference fixed from .jpg to .png
 
 ### UserPlane Class
-- changed image_height to 50 after image resizing
-- adjusted projectile position
-- added horizontal movement
+- adjusted image_height (image too large after replacing with new sprite)
+- adjusted projectile position (projectile came out offset from new sprite)
+- added horizontal movement (added horizontal velocity variables and moveLeft and moveRight methods)
 
 ### EnemyPlane Class
-- changed image_height to 50 after image resizing
+- adjusted image_height (image too large after replacing with new sprite)
 
 ### Boss Class
-- changed image_height to 75 after image resizing
-- edited boss shield probability and max frames with shield to make it more interactive
+- adjusted image_height (image too large after replacing with new sprite)
+- adjusted boss shield probability and max frames with shield (rebalancing user and boss to decrease fight length)
 - instantiate ShieldImage class here instead of in LevelViewLevelTwo class
-- fixed activate, deactivate shield functions
+- fixed activate and deactivate shield functions (fixed shield related functions)
 - added shieldimage getter so it can be called in LevelTwo
 
 ### UserProjectile Class
-- changed image_height to 8 after image resizing
+- adjusted image_height (image too large after replacing with new sprite)
 
 ### EnemyProjectile Class
-- changed image_height to 25 after image resizing
+- adjusted image_height (image too large after replacing with new sprite)
 
 ### LevelView Class
-- edited loss screen x and y positions to center loss image
+- adjusted loss screen x and y positions to center loss image
 
 ### LevelParent Class
-- destroyed Userplane instance on level up
+- destroyed Userplane instance on level up (cleared user instance from previous level to prevent memory leak and reduce memory usage)
 - added horizontal movement key listeners
 
 ### LevelTwo Class
