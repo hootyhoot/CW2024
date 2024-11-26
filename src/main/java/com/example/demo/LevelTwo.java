@@ -4,12 +4,12 @@ public class LevelTwo extends LevelParent {
 
 	private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background2.jpg";
 	private static final int PLAYER_INITIAL_HEALTH = 5;
-	private final Boss boss;
-	private LevelView levelView;
+	private final Boss m_Boss;
+	private LevelView m_LevelView;
 
 	public LevelTwo(double screenHeight, double screenWidth) {
 		super(BACKGROUND_IMAGE_NAME, screenHeight, screenWidth, PLAYER_INITIAL_HEALTH);
-		boss = new Boss();
+		m_Boss = new Boss();
 	}
 
 	@Override
@@ -18,11 +18,11 @@ public class LevelTwo extends LevelParent {
 	}
 
 	@Override
-	protected void checkIfGameOver() {
-		if (userIsDestroyed()) {
+	protected void isGameOver() {
+		if (isUserDestroyed()) {
 			loseGame();
 		}
-		else if (boss.isDestroyed()) {
+		else if (m_Boss.isDestroyed()) {
 			winGame();
 		}
 	}
@@ -30,15 +30,15 @@ public class LevelTwo extends LevelParent {
 	@Override
 	protected void spawnEnemyUnits() {
 		if (getCurrentNumberOfEnemies() == 0) {
-		addEnemyUnit(boss);
-		getRoot().getChildren().add(boss.getShieldImage());
+		addEnemyUnit(m_Boss);
+		getRoot().getChildren().add(m_Boss.getShieldImage());
 		}
 	}
 
 	@Override
 	protected LevelView instantiateLevelView() {
-		levelView = new LevelView(getRoot(), PLAYER_INITIAL_HEALTH);
-		return levelView;
+		m_LevelView = new LevelView(getRoot(), PLAYER_INITIAL_HEALTH);
+		return m_LevelView;
 	}
 
 }

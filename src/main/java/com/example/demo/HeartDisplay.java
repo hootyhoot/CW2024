@@ -9,42 +9,41 @@ public class HeartDisplay {
 	private static final String HEART_IMAGE_NAME = "/com/example/demo/images/heart.png";
 	private static final int HEART_HEIGHT = 50;
 	private static final int INDEX_OF_FIRST_ITEM = 0;
-	private HBox container;
-	private double containerXPosition;
-	private double containerYPosition;
-	private int numberOfHeartsToDisplay;
+	private HBox m_Container;
+	private double m_ContainerXPosition;
+	private double m_ContainerYPosition;
+	private int m_NumberOfHeartsToDisplay;
 	
 	public HeartDisplay(double xPosition, double yPosition, int heartsToDisplay) {
-		this.containerXPosition = xPosition;
-		this.containerYPosition = yPosition;
-		this.numberOfHeartsToDisplay = heartsToDisplay;
+		this.m_ContainerXPosition = xPosition;
+		this.m_ContainerYPosition = yPosition;
+		this.m_NumberOfHeartsToDisplay = heartsToDisplay;
 		initializeContainer();
 		initializeHearts();
 	}
-	
+
+	public HBox getContainer() {
+		return m_Container;
+	}
+
 	private void initializeContainer() {
-		container = new HBox();
-		container.setLayoutX(containerXPosition);
-		container.setLayoutY(containerYPosition);		
+		m_Container = new HBox();
+		m_Container.setLayoutX(m_ContainerXPosition);
+		m_Container.setLayoutY(m_ContainerYPosition);
 	}
 	
 	private void initializeHearts() {
-		for (int i = 0; i < numberOfHeartsToDisplay; i++) {
+		for (int i = 0; i < m_NumberOfHeartsToDisplay; i++) {
 			ImageView heart = new ImageView(new Image(getClass().getResource(HEART_IMAGE_NAME).toExternalForm()));
 
 			heart.setFitHeight(HEART_HEIGHT);
 			heart.setPreserveRatio(true);
-			container.getChildren().add(heart);
+			m_Container.getChildren().add(heart);
 		}
 	}
 	
 	public void removeHeart() {
-		if (!container.getChildren().isEmpty())
-			container.getChildren().remove(INDEX_OF_FIRST_ITEM);
+		if (!m_Container.getChildren().isEmpty())
+			m_Container.getChildren().remove(INDEX_OF_FIRST_ITEM);
 	}
-	
-	public HBox getContainer() {
-		return container;
-	}
-
 }

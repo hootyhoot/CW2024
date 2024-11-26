@@ -8,37 +8,37 @@ public class LevelView {
 	private static final double HEART_DISPLAY_Y_POSITION = 25;
 	private static final int WIN_IMAGE_X_POSITION = 355;
 	private static final int WIN_IMAGE_Y_POSITION = 175;
-	private static final int LOSS_SCREEN_X_POSITION = -30;
+	private static final int LOSS_SCREEN_X_POSITION = 0;
 	private static final int LOSS_SCREEN_Y_POSISITION = -300;
-	private final Group root;
-	private final WinImage winImage;
-	private final GameOverImage gameOverImage;
-	private final HeartDisplay heartDisplay;
+	private final Group m_Root;
+	private final WinImage m_WinImage;
+	private final GameOverImage m_GameOverImage;
+	private final HeartDisplay m_HeartDisplay;
 	
 	public LevelView(Group root, int heartsToDisplay) {
-		this.root = root;
-		this.heartDisplay = new HeartDisplay(HEART_DISPLAY_X_POSITION, HEART_DISPLAY_Y_POSITION, heartsToDisplay);
-		this.winImage = new WinImage(WIN_IMAGE_X_POSITION, WIN_IMAGE_Y_POSITION);
-		this.gameOverImage = new GameOverImage(LOSS_SCREEN_X_POSITION, LOSS_SCREEN_Y_POSISITION);
+		this.m_Root = root;
+		this.m_HeartDisplay = new HeartDisplay(HEART_DISPLAY_X_POSITION, HEART_DISPLAY_Y_POSITION, heartsToDisplay);
+		this.m_WinImage = new WinImage(WIN_IMAGE_X_POSITION, WIN_IMAGE_Y_POSITION);
+		this.m_GameOverImage = new GameOverImage(LOSS_SCREEN_X_POSITION, LOSS_SCREEN_Y_POSISITION);
 	}
 	
 	public void showHeartDisplay() {
-		root.getChildren().add(heartDisplay.getContainer());
+		m_Root.getChildren().add(m_HeartDisplay.getContainer());
 	}
 
 	public void showWinImage() {
-		root.getChildren().add(winImage);
-		winImage.showWinImage();
+		m_Root.getChildren().add(m_WinImage);
+		m_WinImage.showWinImage();
 	}
 	
 	public void showGameOverImage() {
-		root.getChildren().add(gameOverImage);
+		m_Root.getChildren().add(m_GameOverImage);
 	}
 	
 	public void removeHearts(int heartsRemaining) {
-		int currentNumberOfHearts = heartDisplay.getContainer().getChildren().size();
+		int currentNumberOfHearts = m_HeartDisplay.getContainer().getChildren().size();
 		for (int i = 0; i < currentNumberOfHearts - heartsRemaining; i++) {
-			heartDisplay.removeHeart();
+			m_HeartDisplay.removeHeart();
 		}
 	}
 
