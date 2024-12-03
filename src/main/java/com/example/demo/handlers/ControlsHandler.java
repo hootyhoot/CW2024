@@ -4,7 +4,7 @@ import com.example.demo.entities.UserPlane;
 import com.example.demo.levels.LevelParent;
 import javafx.animation.Timeline;
 import javafx.event.EventHandler;
-import javafx.scene.image.ImageView;
+import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
@@ -19,8 +19,8 @@ public class ControlsHandler {
         this.m_LevelParent = levelParent;
     }
 
-    public void createControlsListeners(ImageView background, UserPlane user, Timeline timeline) {
-        background.setOnKeyPressed(new EventHandler<KeyEvent>() {
+    public void createControlsListeners(Scene scene, UserPlane user, Timeline timeline) {
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent e) {
                 KeyCode kc = e.getCode();
                 pressedKeys.add(kc);
@@ -30,7 +30,7 @@ public class ControlsHandler {
                 if (kc == KeyCode.ENTER) timeline.play();
             }
         });
-        background.setOnKeyReleased(new EventHandler<KeyEvent>() {
+        scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent e) {
                 KeyCode kc = e.getCode();
                 pressedKeys.remove(kc);
@@ -39,7 +39,7 @@ public class ControlsHandler {
         });
     }
 
-    private void updateMovement(UserPlane user) { //ensures movement never stops if two keys are pressed and released at the same time
+    private void updateMovement(UserPlane user) {
         if (pressedKeys.contains(KeyCode.UP)) {
             user.moveUp();
         } else if (pressedKeys.contains(KeyCode.DOWN)) {

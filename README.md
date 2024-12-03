@@ -38,6 +38,7 @@
 
 ### ControlsHandler Class
 - edited controls logic so that the user plane never stops moving when a key is pressed and released at the same time
+- linked the key listener to the scene instead of the background
 
 ### ActiveActor Class
 - renamed to GameEntity Class

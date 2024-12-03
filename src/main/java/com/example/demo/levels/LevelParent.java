@@ -51,7 +51,7 @@ public abstract class LevelParent extends Observable {
 
 	public Scene initializeScene() {
 		initializeBackground();
-		m_ControlsHandler.createControlsListeners(m_Background, getUser(), m_Timeline);
+		m_ControlsHandler.createControlsListeners(m_Scene, getUser(), m_Timeline);
 		initializeFriendlyUnits();
 		m_LevelView.showHeartDisplay();
 		return m_Scene;
