@@ -26,7 +26,7 @@ public class Boss extends FighterPlane {
 	private int m_ConsecutiveMovesInSameDirection;
 	private int m_IndexOfCurrentMove;
 	private int m_FramesWithShieldActivated;
-	private ShieldImage m_Shield;
+	private final ShieldImage m_Shield;
 
 	public Boss() {
 		super(IMAGE_NAME, IMAGE_HEIGHT, INITIAL_X_POSITION, INITIAL_Y_POSITION, HEALTH);

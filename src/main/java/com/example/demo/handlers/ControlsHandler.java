@@ -3,10 +3,8 @@ package com.example.demo.handlers;
 import com.example.demo.entities.UserPlane;
 import com.example.demo.levels.LevelParent;
 import javafx.animation.Timeline;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,22 +18,18 @@ public class ControlsHandler {
     }
 
     public void createControlsListeners(Scene scene, UserPlane user, Timeline timeline) {
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            public void handle(KeyEvent e) {
-                KeyCode kc = e.getCode();
-                pressedKeys.add(kc);
-                updateMovement(user);
-                if (kc == KeyCode.SPACE) m_LevelParent.fireProjectile();
-                if (kc == KeyCode.ESCAPE) timeline.pause();
-                if (kc == KeyCode.ENTER) timeline.play();
-            }
+        scene.setOnKeyPressed(e -> {
+            KeyCode kc = e.getCode();
+            pressedKeys.add(kc);
+            updateMovement(user);
+            if (kc == KeyCode.SPACE) m_LevelParent.fireProjectile();
+            if (kc == KeyCode.ESCAPE) timeline.pause();
+            if (kc == KeyCode.ENTER) timeline.play();
         });
-        scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
-            public void handle(KeyEvent e) {
-                KeyCode kc = e.getCode();
-                pressedKeys.remove(kc);
-                updateMovement(user);
-            }
+        scene.setOnKeyReleased(e -> {
+            KeyCode kc = e.getCode();
+            pressedKeys.remove(kc);
+            updateMovement(user);
         });
     }
 

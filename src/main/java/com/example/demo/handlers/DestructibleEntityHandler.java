@@ -7,7 +7,6 @@ import com.example.demo.entities.UserPlane;
 import javafx.scene.Group;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class DestructibleEntityHandler implements EnemyInterface {
 
@@ -64,10 +63,10 @@ public class DestructibleEntityHandler implements EnemyInterface {
     }
 
     public void updateEntity() {
-        m_FriendlyUnits.forEach(plane -> plane.updateEntity());
-        m_EnemyUnits.forEach(enemy -> enemy.updateEntity());
-        m_UserProjectiles.forEach(projectile -> projectile.updateEntity());
-        m_EnemyProjectiles.forEach(projectile -> projectile.updateEntity());
+        m_FriendlyUnits.forEach(DestructibleEntity::updateEntity);
+        m_EnemyUnits.forEach(DestructibleEntity::updateEntity);
+        m_UserProjectiles.forEach(DestructibleEntity::updateEntity);
+        m_EnemyProjectiles.forEach(DestructibleEntity::updateEntity);
     }
 
     public void removeAllDestroyedEntities() {
@@ -85,8 +84,8 @@ public class DestructibleEntityHandler implements EnemyInterface {
     }
 
     private void removeDestroyedEntities(List<DestructibleEntity> entities) {
-        List<DestructibleEntity> destroyedEntities = entities.stream().filter(entity -> entity.isDestroyed())
-                .collect(Collectors.toList());
+        List<DestructibleEntity> destroyedEntities = entities.stream().filter(DestructibleEntity::isDestroyed)
+                .toList();
         m_Root.getChildren().removeAll(destroyedEntities);
         entities.removeAll(destroyedEntities);
     }

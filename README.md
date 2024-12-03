@@ -35,6 +35,9 @@
 - used Uncle Bob's 10 coding convention rules for variable, field, and method names
 - ordered methods in classes by visibility (public, protected, package-private, private)
 - placed classes in packages according to their function (eg. entities, handlers, gui)
+- set local variables to final if they are not reassigned
+- removed unused imports
+- setting fields to local variables
 
 ### ControlsHandler Class
 - edited controls logic so that the user plane never stops moving when a key is pressed and released at the same time

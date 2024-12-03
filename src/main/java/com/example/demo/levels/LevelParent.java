@@ -26,12 +26,12 @@ public abstract class LevelParent extends Observable {
 	private final Timeline m_Timeline;
 	private final Scene m_Scene;
 	private final ImageView m_Background;
-	private CollisionHandler m_CollisionHandler;
-	private ControlsHandler m_ControlsHandler;
+	private final CollisionHandler m_CollisionHandler;
+	private final ControlsHandler m_ControlsHandler;
 	private final DestructibleEntityHandler m_DestructibleEntityHandler;
 
 	private int m_CurrentNumberOfEnemies;
-	private LevelView m_LevelView;
+	private final LevelView m_LevelView;
 
 	public LevelParent(String backgroundImageName, double screenHeight, double screenWidth, int playerInitialHealth) {
 		this.m_Root = new Group();
@@ -40,7 +40,7 @@ public abstract class LevelParent extends Observable {
 		this.m_CollisionHandler = new CollisionHandler();
 		this.m_DestructibleEntityHandler = new DestructibleEntityHandler(m_Root, playerInitialHealth);
 		this.m_ControlsHandler = new ControlsHandler(this);
-		this.m_Background = new ImageView(new Image(getClass().getResource(backgroundImageName).toExternalForm()));
+		this.m_Background = new ImageView(new Image(Objects.requireNonNull(getClass().getResource(backgroundImageName)).toExternalForm()));
 		this.m_ScreenHeight = screenHeight;
 		this.m_ScreenWidth = screenWidth;
 		this.m_EnemyMaximumYPosition = screenHeight - SCREEN_HEIGHT_ADJUSTMENT;

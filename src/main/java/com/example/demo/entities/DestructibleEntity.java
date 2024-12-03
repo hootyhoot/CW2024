@@ -21,14 +21,14 @@ public abstract class DestructibleEntity extends GameEntity implements Destructi
 
 	@Override
 	public void destroy() {
-		setDestroyed(true);
+		setDestroyed();
 	}
 
 	public boolean isDestroyed() {
 		return m_IsDestroyed;
 	}
 
-	private void setDestroyed(boolean isDestroyed) {
-		this.m_IsDestroyed = isDestroyed;
+	private void setDestroyed() {
+		this.m_IsDestroyed = true;
 	}
 }
