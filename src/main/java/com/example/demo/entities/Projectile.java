@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.entities;
 
 public abstract class Projectile extends DestructibleEntity {
 
@@ -12,6 +12,5 @@ public abstract class Projectile extends DestructibleEntity {
 	}
 
 	@Override
-	public abstract void updatePosition();
-
+	abstract void updatePosition();
 }

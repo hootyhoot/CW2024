@@ -12,7 +12,7 @@
 # Compilation Instructions
 
 # Implemented and Working Correctly
-- UserPlane can move left, right, up, down
+- UserPlane can move left, right, up, down without stopping at any point
 - All sprites cropped to adjust hitboxes
 - Shield capability for boss
 
@@ -32,7 +32,12 @@
 # Modified Java Classes
 
 ### All Classes
-- used Uncle Bob's 10 coding convention rules for variable, field, and method names and placements
+- used Uncle Bob's 10 coding convention rules for variable, field, and method names
+- ordered methods in classes by visibility (public, protected, package-private, private)
+- placed classes in packages according to their function (eg. entities, handlers, gui)
+
+### ControlsHandler Class
+- edited controls logic so that the user plane never stops moving when a key is pressed and released at the same time
 
 ### ActiveActor Class
 - renamed to GameEntity Class

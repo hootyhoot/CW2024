@@ -1,22 +1,25 @@
-package com.example.demo;
+package com.example.demo.handlers;
+
+import com.example.demo.entities.DestructibleEntity;
+import com.example.demo.entities.UserPlane;
 
 import java.util.List;
 
 public class CollisionHandler {
 
-    protected void handlePlaneCollisions(List<DestructibleEntity> friendlyUnits, List<DestructibleEntity> enemyUnits) {
+    public void handlePlaneCollisions(List<DestructibleEntity> friendlyUnits, List<DestructibleEntity> enemyUnits) {
         handleCollisions(friendlyUnits, enemyUnits);
     }
 
-    protected void handleUserProjectileCollisions(List<DestructibleEntity> userProjectiles, List<DestructibleEntity> enemyUnits) {
+    public void handleUserProjectileCollisions(List<DestructibleEntity> userProjectiles, List<DestructibleEntity> enemyUnits) {
         handleCollisions(userProjectiles, enemyUnits);
     }
 
-    protected void handleEnemyProjectileCollisions(List<DestructibleEntity> enemyProjectiles, List<DestructibleEntity> friendlyUnits) {
+    public void handleEnemyProjectileCollisions(List<DestructibleEntity> enemyProjectiles, List<DestructibleEntity> friendlyUnits) {
         handleCollisions(enemyProjectiles, friendlyUnits);
     }
 
-    protected void handleEnemyPenetration(List<DestructibleEntity> enemyUnits, UserPlane user, double screenWidth) {
+    public void handleEnemyPenetration(List<DestructibleEntity> enemyUnits, UserPlane user, double screenWidth) {
         for (DestructibleEntity enemy : enemyUnits) {
             if (isEnemyPastScreenBorder(enemy, screenWidth)) {
                 user.takeDamage();

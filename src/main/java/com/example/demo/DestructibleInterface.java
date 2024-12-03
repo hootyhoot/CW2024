@@ -1,6 +1,6 @@
 package com.example.demo;
 
-public interface Destructible {
+public interface DestructibleInterface {
 
 	void takeDamage();
 

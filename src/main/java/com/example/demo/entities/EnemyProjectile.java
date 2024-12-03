@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.entities;
 
 public class EnemyProjectile extends Projectile {
 	
@@ -10,15 +10,14 @@ public class EnemyProjectile extends Projectile {
 		super(IMAGE_NAME, IMAGE_HEIGHT, initialXPos, initialYPos);
 	}
 
-	@Override
-	public void updatePosition() {
-		moveHorizontally(HORIZONTAL_VELOCITY);
-	}
 
 	@Override
 	public void updateEntity() {
 		updatePosition();
 	}
 
-
+	@Override
+	void updatePosition() {
+		moveHorizontally(HORIZONTAL_VELOCITY);
+	}
 }

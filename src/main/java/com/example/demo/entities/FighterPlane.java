@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.entities;
 
 public abstract class FighterPlane extends DestructibleEntity {
 
@@ -13,16 +13,6 @@ public abstract class FighterPlane extends DestructibleEntity {
 		return m_Health;
 	}
 
-	protected double getProjectileXPosition(double xPositionOffset) {
-		return getLayoutX() + getTranslateX() + xPositionOffset;
-	}
-
-	protected double getProjectileYPosition(double yPositionOffset) {
-		return getLayoutY() + getTranslateY() + yPositionOffset;
-	}
-
-	public abstract DestructibleEntity fireProjectile();
-	
 	@Override
 	public void takeDamage() {
 		m_Health--;
@@ -31,8 +21,17 @@ public abstract class FighterPlane extends DestructibleEntity {
 		}
 	}
 
+	public abstract DestructibleEntity fireProjectile();
+
+	double getProjectileXPosition(double xPositionOffset) {
+		return getLayoutX() + getTranslateX() + xPositionOffset;
+	}
+
+	double getProjectileYPosition(double yPositionOffset) {
+		return getLayoutY() + getTranslateY() + yPositionOffset;
+	}
+
 	private boolean isHealthAtZero() {
 		return m_Health == 0;
 	}
-
 }

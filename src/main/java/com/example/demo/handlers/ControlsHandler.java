@@ -1,0 +1,59 @@
+package com.example.demo.handlers;
+
+import com.example.demo.entities.UserPlane;
+import com.example.demo.levels.LevelParent;
+import javafx.animation.Timeline;
+import javafx.event.EventHandler;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class ControlsHandler {
+    private final LevelParent m_LevelParent;
+    private final Set<KeyCode> pressedKeys = new HashSet<>();
+
+    public ControlsHandler(LevelParent levelParent) {
+        this.m_LevelParent = levelParent;
+    }
+
+    public void createControlsListeners(ImageView background, UserPlane user, Timeline timeline) {
+        background.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            public void handle(KeyEvent e) {
+                KeyCode kc = e.getCode();
+                pressedKeys.add(kc);
+                updateMovement(user);
+                if (kc == KeyCode.SPACE) m_LevelParent.fireProjectile();
+                if (kc == KeyCode.ESCAPE) timeline.pause();
+                if (kc == KeyCode.ENTER) timeline.play();
+            }
+        });
+        background.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            public void handle(KeyEvent e) {
+                KeyCode kc = e.getCode();
+                pressedKeys.remove(kc);
+                updateMovement(user);
+            }
+        });
+    }
+
+    private void updateMovement(UserPlane user) { //ensures movement never stops if two keys are pressed and released at the same time
+        if (pressedKeys.contains(KeyCode.UP)) {
+            user.moveUp();
+        } else if (pressedKeys.contains(KeyCode.DOWN)) {
+            user.moveDown();
+        } else {
+            user.stopVertically();
+        }
+
+        if (pressedKeys.contains(KeyCode.LEFT)) {
+            user.moveLeft();
+        } else if (pressedKeys.contains(KeyCode.RIGHT)) {
+            user.moveRight();
+        } else {
+            user.stopHorizontally();
+        }
+    }
+}

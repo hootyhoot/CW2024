@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.gui;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -26,6 +26,11 @@ public class HeartDisplay {
 		return m_Container;
 	}
 
+	void removeHeart() {
+		if (!m_Container.getChildren().isEmpty())
+			m_Container.getChildren().remove(INDEX_OF_FIRST_ITEM);
+	}
+
 	private void initializeContainer() {
 		m_Container = new HBox();
 		m_Container.setLayoutX(m_ContainerXPosition);
@@ -40,10 +45,5 @@ public class HeartDisplay {
 			heart.setPreserveRatio(true);
 			m_Container.getChildren().add(heart);
 		}
-	}
-	
-	public void removeHeart() {
-		if (!m_Container.getChildren().isEmpty())
-			m_Container.getChildren().remove(INDEX_OF_FIRST_ITEM);
 	}
 }

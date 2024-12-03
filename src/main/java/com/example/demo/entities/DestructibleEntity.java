@@ -1,6 +1,8 @@
-package com.example.demo;
+package com.example.demo.entities;
 
-public abstract class DestructibleEntity extends GameEntity implements Destructible {
+import com.example.demo.DestructibleInterface;
+
+public abstract class DestructibleEntity extends GameEntity implements DestructibleInterface {
 
 	private boolean m_IsDestroyed;
 
@@ -9,13 +11,13 @@ public abstract class DestructibleEntity extends GameEntity implements Destructi
 		m_IsDestroyed = false;
 	}
 
-	@Override
-	public abstract void updatePosition();
-
 	public abstract void updateEntity();
 
 	@Override
 	public abstract void takeDamage();
+
+	@Override
+	abstract void updatePosition();
 
 	@Override
 	public void destroy() {
@@ -26,7 +28,7 @@ public abstract class DestructibleEntity extends GameEntity implements Destructi
 		return m_IsDestroyed;
 	}
 
-	protected void setDestroyed(boolean isDestroyed) {
+	private void setDestroyed(boolean isDestroyed) {
 		this.m_IsDestroyed = isDestroyed;
 	}
 }

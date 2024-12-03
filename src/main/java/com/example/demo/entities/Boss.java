@@ -1,4 +1,6 @@
-package com.example.demo;
+package com.example.demo.entities;
+
+import com.example.demo.gui.ShieldImage;
 
 import java.util.*;
 
@@ -41,26 +43,8 @@ public class Boss extends FighterPlane {
 		return m_Shield;
 	}
 
-	private int getNextMove() {
-		int currentMove = m_NextMoves.get(m_IndexOfCurrentMove);
-		m_ConsecutiveMovesInSameDirection++;
-		if (m_ConsecutiveMovesInSameDirection == MAX_FRAMES_WITH_SAME_MOVE) {
-			Collections.shuffle(m_NextMoves);
-			m_ConsecutiveMovesInSameDirection = 5;
-			m_IndexOfCurrentMove++;
-		}
-		if (m_IndexOfCurrentMove == m_NextMoves.size()) {
-			m_IndexOfCurrentMove = 0;
-		}
-		return currentMove;
-	}
-
-	private double getProjectileInitialPosition() {
-		return getLayoutY() + getTranslateY() + PROJECTILE_Y_POSITION_OFFSET;
-	}
-
 	@Override
-	public void updatePosition() {
+	void updatePosition() {
 		double initialTranslateY = getTranslateY();
 		moveVertically(getNextMove());
 		double currentPosition = getLayoutY() + getTranslateY();
@@ -86,6 +70,24 @@ public class Boss extends FighterPlane {
 		if (!m_IsShielded) {
 			super.takeDamage();
 		}
+	}
+
+	private int getNextMove() {
+		int currentMove = m_NextMoves.get(m_IndexOfCurrentMove);
+		m_ConsecutiveMovesInSameDirection++;
+		if (m_ConsecutiveMovesInSameDirection == MAX_FRAMES_WITH_SAME_MOVE) {
+			Collections.shuffle(m_NextMoves);
+			m_ConsecutiveMovesInSameDirection = 5;
+			m_IndexOfCurrentMove++;
+		}
+		if (m_IndexOfCurrentMove == m_NextMoves.size()) {
+			m_IndexOfCurrentMove = 0;
+		}
+		return currentMove;
+	}
+
+	private double getProjectileInitialPosition() {
+		return getLayoutY() + getTranslateY() + PROJECTILE_Y_POSITION_OFFSET;
 	}
 
 	private void initializeMovePattern() {

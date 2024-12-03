@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.entities;
 
 public class UserProjectile extends Projectile {
 
@@ -11,13 +11,12 @@ public class UserProjectile extends Projectile {
 	}
 
 	@Override
-	public void updatePosition() {
-		moveHorizontally(HORIZONTAL_VELOCITY);
-	}
-	
-	@Override
 	public void updateEntity() {
 		updatePosition();
 	}
-	
+
+	@Override
+	void updatePosition() {
+		moveHorizontally(HORIZONTAL_VELOCITY);
+	}
 }

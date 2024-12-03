@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.entities;
 
 public class EnemyPlane extends FighterPlane {
 
@@ -12,11 +12,6 @@ public class EnemyPlane extends FighterPlane {
 
 	public EnemyPlane(double initialXPos, double initialYPos) {
 		super(IMAGE_NAME, IMAGE_HEIGHT, initialXPos, initialYPos, INITIAL_HEALTH);
-	}
-
-	@Override
-	public void updatePosition() {
-		moveHorizontally(HORIZONTAL_VELOCITY);
 	}
 
 	@Override
@@ -34,4 +29,8 @@ public class EnemyPlane extends FighterPlane {
 		updatePosition();
 	}
 
+	@Override
+	void updatePosition() {
+		moveHorizontally(HORIZONTAL_VELOCITY);
+	}
 }

@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.entities;
 
 import javafx.scene.image.*;
 
@@ -14,14 +14,13 @@ public abstract class GameEntity extends ImageView {
 		this.setPreserveRatio(true);
 	}
 
-	public abstract void updatePosition();
+	abstract void updatePosition();
 
-	protected void moveHorizontally(double horizontalMove) {
+	void moveHorizontally(double horizontalMove) {
 		this.setTranslateX(getTranslateX() + horizontalMove);
 	}
 
-	protected void moveVertically(double verticalMove) {
+	void moveVertically(double verticalMove) {
 		this.setTranslateY(getTranslateY() + verticalMove);
 	}
-
 }

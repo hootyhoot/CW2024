@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.entities;
 
 public class UserPlane extends FighterPlane {
 
@@ -29,26 +29,6 @@ public class UserPlane extends FighterPlane {
 	}
 
 	@Override
-	public void updatePosition() { //split?
-		if (isMovingVertically()) {
-			double initialTranslateY = getTranslateY();
-			this.moveVertically(VERTICAL_VELOCITY * m_VerticalVelocityMultiplier);
-			double newPosition = getLayoutY() + getTranslateY();
-			if (newPosition < Y_UPPER_BOUND || newPosition > Y_LOWER_BOUND) {
-				this.setTranslateY(initialTranslateY);
-			}
-		}
-		if (isMovingHorizontally()) {
-			double initialTranslateX = getTranslateX();
-			this.moveHorizontally(HORIZONTAL_VELOCITY * m_HorizontalVelocityMultiplier);
-			double newPosition = getLayoutX() + getTranslateX();
-			if (newPosition < X_LOWER_BOUND || newPosition > X_UPPER_BOUND) {
-				this.setTranslateX(initialTranslateX);
-			}
-		}
-	}
-	
-	@Override
 	public void updateEntity() {
 		updatePosition();
 	}
@@ -58,14 +38,6 @@ public class UserPlane extends FighterPlane {
 		double projectileX = getProjectileXPosition(PROJECTILE_X_POSITION);
 		double projectileY = getProjectileYPosition(PROJECTILE_Y_POSITION_OFFSET);
 		return new UserProjectile(projectileX, projectileY);
-	}
-
-	private boolean isMovingHorizontally() {
-		return m_HorizontalVelocityMultiplier != 0;
-	}
-
-	private boolean isMovingVertically() {
-		return m_VerticalVelocityMultiplier != 0;
 	}
 
 	public void moveUp() {
@@ -94,5 +66,33 @@ public class UserPlane extends FighterPlane {
 
 	public void incrementKillCount() {
 		m_NumberOfKills++;
+	}
+
+	@Override
+	void updatePosition() { //split?
+		if (isMovingVertically()) {
+			double initialTranslateY = getTranslateY();
+			this.moveVertically(VERTICAL_VELOCITY * m_VerticalVelocityMultiplier);
+			double newPosition = getLayoutY() + getTranslateY();
+			if (newPosition < Y_UPPER_BOUND || newPosition > Y_LOWER_BOUND) {
+				this.setTranslateY(initialTranslateY);
+			}
+		}
+		if (isMovingHorizontally()) {
+			double initialTranslateX = getTranslateX();
+			this.moveHorizontally(HORIZONTAL_VELOCITY * m_HorizontalVelocityMultiplier);
+			double newPosition = getLayoutX() + getTranslateX();
+			if (newPosition < X_LOWER_BOUND || newPosition > X_UPPER_BOUND) {
+				this.setTranslateX(initialTranslateX);
+			}
+		}
+	}
+
+	private boolean isMovingHorizontally() {
+		return m_HorizontalVelocityMultiplier != 0;
+	}
+
+	private boolean isMovingVertically() {
+		return m_VerticalVelocityMultiplier != 0;
 	}
 }

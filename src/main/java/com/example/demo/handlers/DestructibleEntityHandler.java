@@ -1,11 +1,15 @@
-package com.example.demo;
+package com.example.demo.handlers;
 
+import com.example.demo.EnemyInterface;
+import com.example.demo.entities.DestructibleEntity;
+import com.example.demo.entities.FighterPlane;
+import com.example.demo.entities.UserPlane;
 import javafx.scene.Group;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class DestructibleEntityHandler implements DestructibleEntityInterface {
+public class DestructibleEntityHandler implements EnemyInterface {
 
     private final Group m_Root;
     private final UserPlane m_User;
@@ -45,18 +49,32 @@ public class DestructibleEntityHandler implements DestructibleEntityInterface {
         return m_EnemyUnits.size();
     }
 
+    public UserPlane getUser() {
+        return m_User;
+    }
+
     @Override
     public void addEnemyUnit(DestructibleEntity enemy) {
         m_EnemyUnits.add(enemy);
         m_Root.getChildren().add(enemy);
     }
 
-    protected UserPlane getUser() {
-        return m_User;
+    public void generateEnemyFire() {
+        m_EnemyUnits.forEach(enemy -> spawnEnemyProjectile(((FighterPlane) enemy).fireProjectile()));
     }
 
-    protected void generateEnemyFire() {
-        m_EnemyUnits.forEach(enemy -> spawnEnemyProjectile(((FighterPlane) enemy).fireProjectile()));
+    public void updateEntity() {
+        m_FriendlyUnits.forEach(plane -> plane.updateEntity());
+        m_EnemyUnits.forEach(enemy -> enemy.updateEntity());
+        m_UserProjectiles.forEach(projectile -> projectile.updateEntity());
+        m_EnemyProjectiles.forEach(projectile -> projectile.updateEntity());
+    }
+
+    public void removeAllDestroyedEntities() {
+        removeDestroyedEntities(m_FriendlyUnits);
+        removeDestroyedEntities(m_EnemyUnits);
+        removeDestroyedEntities(m_UserProjectiles);
+        removeDestroyedEntities(m_EnemyProjectiles);
     }
 
     private void spawnEnemyProjectile(DestructibleEntity projectile) {
@@ -64,20 +82,6 @@ public class DestructibleEntityHandler implements DestructibleEntityInterface {
             m_Root.getChildren().add(projectile);
             m_EnemyProjectiles.add(projectile);
         }
-    }
-
-    protected void updateEntity() {
-        m_FriendlyUnits.forEach(plane -> plane.updateEntity());
-        m_EnemyUnits.forEach(enemy -> enemy.updateEntity());
-        m_UserProjectiles.forEach(projectile -> projectile.updateEntity());
-        m_EnemyProjectiles.forEach(projectile -> projectile.updateEntity());
-    }
-
-    protected void removeAllDestroyedEntities() {
-        removeDestroyedEntities(m_FriendlyUnits);
-        removeDestroyedEntities(m_EnemyUnits);
-        removeDestroyedEntities(m_UserProjectiles);
-        removeDestroyedEntities(m_EnemyProjectiles);
     }
 
     private void removeDestroyedEntities(List<DestructibleEntity> entities) {

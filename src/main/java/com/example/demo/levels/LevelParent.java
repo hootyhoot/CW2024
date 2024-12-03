@@ -1,6 +1,13 @@
-package com.example.demo;
+package com.example.demo.levels;
 
 import java.util.*;
+
+import com.example.demo.entities.DestructibleEntity;
+import com.example.demo.entities.UserPlane;
+import com.example.demo.gui.LevelView;
+import com.example.demo.handlers.CollisionHandler;
+import com.example.demo.handlers.ControlsHandler;
+import com.example.demo.handlers.DestructibleEntityHandler;
 import javafx.animation.*;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -42,40 +49,18 @@ public abstract class LevelParent extends Observable {
 		initializeTimeline();
 	}
 
-	protected UserPlane getUser() {
-		return m_DestructibleEntityHandler.getUser();
-	}
-
-	public Group getRoot() {
-		return m_Root;
-	}
-
-	public DestructibleEntityInterface getEntityHandler() {
-		return m_DestructibleEntityHandler;
-	}
-
-	protected double getEnemyMaximumYPosition() {
-		return m_EnemyMaximumYPosition;
-	}
-
-	public double getScreenWidth() {
-		return m_ScreenWidth;
-	}
-
-	protected abstract void initializeFriendlyUnits();
-
-	protected abstract void isGameOver();
-
-	protected abstract void spawnEnemyUnits();
-
-	protected abstract LevelView instantiateLevelView();
-
 	public Scene initializeScene() {
 		initializeBackground();
 		m_ControlsHandler.createControlsListeners(m_Background, getUser(), m_Timeline);
 		initializeFriendlyUnits();
 		m_LevelView.showHeartDisplay();
 		return m_Scene;
+	}
+
+	public void fireProjectile() {
+		DestructibleEntity projectile = getUser().fireProjectile();
+		m_Root.getChildren().add(projectile);
+		m_DestructibleEntityHandler.getUserProjectiles().add(projectile);
 	}
 
 	public void startGame() {
@@ -91,6 +76,14 @@ public abstract class LevelParent extends Observable {
 		notifyObservers(levelName);
 	}
 
+	protected abstract void initializeFriendlyUnits();
+
+	protected abstract void isGameOver();
+
+	protected abstract void spawnEnemyUnits();
+
+	protected abstract LevelView instantiateLevelView();
+
 	protected void winGame() {
 		m_Timeline.stop();
 		m_LevelView.showWinImage();
@@ -103,6 +96,26 @@ public abstract class LevelParent extends Observable {
 
 	protected boolean isUserDestroyed() {
 		return getUser().isDestroyed();
+	}
+
+	UserPlane getUser() {
+		return m_DestructibleEntityHandler.getUser();
+	}
+
+	Group getRoot() {
+		return m_Root;
+	}
+
+	DestructibleEntityHandler getEntityHandler() {
+		return m_DestructibleEntityHandler;
+	}
+
+	double getEnemyMaximumYPosition() {
+		return m_EnemyMaximumYPosition;
+	}
+
+	double getScreenWidth() {
+		return m_ScreenWidth;
 	}
 
 	private void updateScene() {
@@ -131,12 +144,6 @@ public abstract class LevelParent extends Observable {
 		m_Background.setFitHeight(m_ScreenHeight);
 		m_Background.setFitWidth(m_ScreenWidth);
 		m_Root.getChildren().add(m_Background);
-	}
-
-	protected void fireProjectile() {
-		DestructibleEntity projectile = getUser().fireProjectile();
-		m_Root.getChildren().add(projectile);
-		m_DestructibleEntityHandler.getUserProjectiles().add(projectile);
 	}
 
 	private void updateLevelView() {
