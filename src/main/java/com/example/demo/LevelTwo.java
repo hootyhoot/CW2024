@@ -21,17 +21,16 @@ public class LevelTwo extends LevelParent {
 	protected void isGameOver() {
 		if (isUserDestroyed()) {
 			loseGame();
-		}
-		else if (m_Boss.isDestroyed()) {
+		} else if (m_Boss.isDestroyed()) {
 			winGame();
 		}
 	}
 
 	@Override
 	protected void spawnEnemyUnits() {
-		if (getCurrentNumberOfEnemies() == 0) {
-		addEnemyUnit(m_Boss);
-		getRoot().getChildren().add(m_Boss.getShieldImage());
+		if (getEntityHandler().getCurrentNumberOfEnemies() == 0) {
+			getEntityHandler().addEnemyUnit(m_Boss);
+			getRoot().getChildren().add(m_Boss.getShieldImage());
 		}
 	}
 
@@ -40,5 +39,4 @@ public class LevelTwo extends LevelParent {
 		m_LevelView = new LevelView(getRoot(), PLAYER_INITIAL_HEALTH);
 		return m_LevelView;
 	}
-
 }

@@ -16,7 +16,7 @@ public class EnemyProjectile extends Projectile {
 	}
 
 	@Override
-	public void updateActor() {
+	public void updateEntity() {
 		updatePosition();
 	}
 

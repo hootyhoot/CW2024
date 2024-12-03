@@ -13,7 +13,7 @@ public class UserPlane extends FighterPlane {
 	private static final int VERTICAL_VELOCITY = 8;
 	private static final int HORIZONTAL_VELOCITY = 8;
 	private static final int PROJECTILE_X_POSITION = 60;
-	private static final int PROJECTILE_Y_POSITION_OFFSET = 20; //TODO
+	private static final int PROJECTILE_Y_POSITION_OFFSET = 20;
 	private int m_HorizontalVelocityMultiplier;
 	private int m_VerticalVelocityMultiplier;
 	private int m_NumberOfKills;
@@ -49,12 +49,12 @@ public class UserPlane extends FighterPlane {
 	}
 	
 	@Override
-	public void updateActor() {
+	public void updateEntity() {
 		updatePosition();
 	}
 	
 	@Override
-	public ActiveActorDestructible fireProjectile() {
+	public DestructibleEntity fireProjectile() {
 		double projectileX = getProjectileXPosition(PROJECTILE_X_POSITION);
 		double projectileY = getProjectileYPosition(PROJECTILE_Y_POSITION_OFFSET);
 		return new UserProjectile(projectileX, projectileY);

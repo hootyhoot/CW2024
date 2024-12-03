@@ -1,12 +1,11 @@
 ## TODO
-- bullets now come out of userplane wrong, offset (solved by adjusting offset in Userplane class)
-- hard coupling (D in SOLID) splitting classes
-- split controllers based on function, UI, game
+- projectiles shoot enemies outside of screen
 - javadocs over each class and method
 - 5-7 tests min (game logic not gui eg testing data comms between functions, conditions for level up)
 - add playable level(s)
 - menu and pause screen
 - creative additions (eg powerups, different enemies, leaderboard saving?)
+- scrolling background?
 
 # Github - https://github.com/hootyhoot/CW2024
 
@@ -18,15 +17,28 @@
 - Shield capability for boss
 
 # Implemented but Not Working Correctly
+- Resume button resumes after loss screen for one frame at a time
 
 # Features Not Implemented
+- Main menu, pause menu and loss restart buttons
+- 2 additional levels
 
 # New Java Classes
+- CollisionHandler Class
+- ControlsHandler Class
+- DestructibleEntityHandler Class
+- DestructibleEntity Interface
 
 # Modified Java Classes
 
 ### All Classes
 - used Uncle Bob's 10 coding convention rules for variable, field, and method names and placements
+
+### ActiveActor Class
+- renamed to GameEntity Class
+
+### ActiveActorDestructible Class
+- renamed to DestructibleEntity Class
 
 ### ShieldImage Class
 - image misreference fixed from .jpg to .png
@@ -38,6 +50,7 @@
 
 ### EnemyPlane Class
 - adjusted image_height (image too large after replacing with new sprite)
+- adjusted projectile position (projectile came out offset from new sprite)
 
 ### Boss Class
 - adjusted image_height (image too large after replacing with new sprite)
@@ -57,7 +70,10 @@
 
 ### LevelParent Class
 - destroyed Userplane instance on level up (cleared user instance from previous level to prevent memory leak and reduce memory usage)
-- added horizontal movement key listeners
+- moved out functions to separate classes (moved out collision detection, user input handling, and destructible entity handling to separate classes)
+- added controlsHandler instance to handle user input
+- added collisionHandler instance to handle collision detection
+- added destructibleEntityHandler instance to handle destructible entities
 
 ### LevelTwo Class
 - changed LevelViewLevelTwo instance to LevelView after refactoring of it

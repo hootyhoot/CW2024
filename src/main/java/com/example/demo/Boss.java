@@ -71,14 +71,14 @@ public class Boss extends FighterPlane {
 	}
 	
 	@Override
-	public void updateActor() {
+	public void updateEntity() {
 		updatePosition();
 		updateShield();
 	}
 
 	@Override
-	public ActiveActorDestructible fireProjectile() {
-		return bossFiresInCurrentFrame() ? new BossProjectile(getProjectileInitialPosition()) : null;
+	public DestructibleEntity fireProjectile() {
+		return isBossFiringInCurrentFrame() ? new BossProjectile(getProjectileInitialPosition()) : null;
 	}
 	
 	@Override
@@ -102,23 +102,23 @@ public class Boss extends FighterPlane {
 			m_FramesWithShieldActivated++;
 			m_Shield.showShield();
 		}
-		else if (shieldShouldBeActivated()) {
+		else if (shouldShieldActivate()) {
 			activateShield();
 		}
-		if (shieldExhausted()) {
+		if (isShieldExhausted()) {
 			deactivateShield();
 		}
 	}
 
-	private boolean bossFiresInCurrentFrame() {
+	private boolean isBossFiringInCurrentFrame() {
 		return Math.random() < BOSS_FIRE_RATE;
 	}
 
-	private boolean shieldShouldBeActivated() {
+	private boolean shouldShieldActivate() {
 		return Math.random() < BOSS_SHIELD_PROBABILITY;
 	}
 
-	private boolean shieldExhausted() {
+	private boolean isShieldExhausted() {
 		return m_FramesWithShieldActivated == MAX_FRAMES_WITH_SHIELD;
 	}
 

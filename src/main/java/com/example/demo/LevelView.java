@@ -9,7 +9,7 @@ public class LevelView {
 	private static final int WIN_IMAGE_X_POSITION = 355;
 	private static final int WIN_IMAGE_Y_POSITION = 175;
 	private static final int LOSS_SCREEN_X_POSITION = 0;
-	private static final int LOSS_SCREEN_Y_POSISITION = -300;
+	private static final int LOSS_SCREEN_Y_POSITION = -300;
 	private final Group m_Root;
 	private final WinImage m_WinImage;
 	private final GameOverImage m_GameOverImage;
@@ -19,7 +19,7 @@ public class LevelView {
 		this.m_Root = root;
 		this.m_HeartDisplay = new HeartDisplay(HEART_DISPLAY_X_POSITION, HEART_DISPLAY_Y_POSITION, heartsToDisplay);
 		this.m_WinImage = new WinImage(WIN_IMAGE_X_POSITION, WIN_IMAGE_Y_POSITION);
-		this.m_GameOverImage = new GameOverImage(LOSS_SCREEN_X_POSITION, LOSS_SCREEN_Y_POSISITION);
+		this.m_GameOverImage = new GameOverImage(LOSS_SCREEN_X_POSITION, LOSS_SCREEN_Y_POSITION);
 	}
 	
 	public void showHeartDisplay() {

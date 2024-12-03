@@ -1,6 +1,6 @@
 package com.example.demo;
 
-public abstract class FighterPlane extends ActiveActorDestructible {
+public abstract class FighterPlane extends DestructibleEntity {
 
 	private int m_Health;
 
@@ -21,7 +21,7 @@ public abstract class FighterPlane extends ActiveActorDestructible {
 		return getLayoutY() + getTranslateY() + yPositionOffset;
 	}
 
-	public abstract ActiveActorDestructible fireProjectile();
+	public abstract DestructibleEntity fireProjectile();
 	
 	@Override
 	public void takeDamage() {

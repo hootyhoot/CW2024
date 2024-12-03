@@ -48,6 +48,5 @@ public class Controller implements Observer {
 			Scene scene = myLevel.initializeScene();
 			m_Stage.setScene(scene);
 			myLevel.startGame();
-
 	}
 }
