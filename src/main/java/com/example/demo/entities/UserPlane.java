@@ -2,7 +2,7 @@ package com.example.demo.entities;
 
 public class UserPlane extends FighterPlane {
 
-	private static final String IMAGE_NAME = "userplane.png";
+	private static final String IMAGE_NAME = "userPlane.png";
 	private static final double Y_UPPER_BOUND = 0;
 	private static final double Y_LOWER_BOUND = 670.0;
 	private static final double X_UPPER_BOUND = 1125.0;
@@ -38,6 +38,10 @@ public class UserPlane extends FighterPlane {
 		double projectileX = getProjectileXPosition(PROJECTILE_X_POSITION);
 		double projectileY = getProjectileYPosition(PROJECTILE_Y_POSITION_OFFSET);
 		return new UserProjectile(projectileX, projectileY);
+	}
+
+	public void incrementHealth() {
+		m_Health++;
 	}
 
 	public void moveUp() {

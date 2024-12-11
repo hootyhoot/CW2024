@@ -2,7 +2,7 @@ package com.example.demo.entities;
 
 public class UserProjectile extends Projectile {
 
-	private static final String IMAGE_NAME = "userfire.png";
+	private static final String IMAGE_NAME = "userProjectile.png";
 	private static final int IMAGE_HEIGHT = 12;
 	private static final int HORIZONTAL_VELOCITY = 15;
 

@@ -16,12 +16,14 @@ public class DestructibleEntityHandler implements EnemyInterface {
     private final List<DestructibleEntity> m_EnemyUnits;
     private final List<DestructibleEntity> m_UserProjectiles;
     private final List<DestructibleEntity> m_EnemyProjectiles;
+    private final List<DestructibleEntity> m_Powerups;
 
     public DestructibleEntityHandler(Group root, int playerInitialHealth) {
         this.m_FriendlyUnits = new ArrayList<>();
         this.m_EnemyUnits = new ArrayList<>();
         this.m_UserProjectiles = new ArrayList<>();
         this.m_EnemyProjectiles = new ArrayList<>();
+        this.m_Powerups = new ArrayList<>();
         this.m_User = new UserPlane(playerInitialHealth);
         this.m_Root = root;
         m_FriendlyUnits.add(m_User);
@@ -43,9 +45,17 @@ public class DestructibleEntityHandler implements EnemyInterface {
         return m_EnemyProjectiles;
     }
 
+    public List<DestructibleEntity> getPowerups() {
+        return m_Powerups;
+    }
+
     @Override
     public int getCurrentNumberOfEnemies() {
         return m_EnemyUnits.size();
+    }
+
+    public int getCurrentNumberOfPowerups() {
+        return m_Powerups.size();
     }
 
     public UserPlane getUser() {
@@ -58,6 +68,13 @@ public class DestructibleEntityHandler implements EnemyInterface {
         m_Root.getChildren().add(enemy);
     }
 
+    public void addPowerup(DestructibleEntity powerup) {
+        if (powerup!= null) {
+            m_Powerups.add(powerup);
+            m_Root.getChildren().add(powerup);
+        }
+    }
+
     public void generateEnemyFire() {
         m_EnemyUnits.forEach(enemy -> spawnEnemyProjectile(((FighterPlane) enemy).fireProjectile()));
     }
@@ -67,6 +84,7 @@ public class DestructibleEntityHandler implements EnemyInterface {
         m_EnemyUnits.forEach(DestructibleEntity::updateEntity);
         m_UserProjectiles.forEach(DestructibleEntity::updateEntity);
         m_EnemyProjectiles.forEach(DestructibleEntity::updateEntity);
+        m_Powerups.forEach(DestructibleEntity::updateEntity);
     }
 
     public void removeAllDestroyedEntities() {
@@ -74,6 +92,7 @@ public class DestructibleEntityHandler implements EnemyInterface {
         removeDestroyedEntities(m_EnemyUnits);
         removeDestroyedEntities(m_UserProjectiles);
         removeDestroyedEntities(m_EnemyProjectiles);
+        removeDestroyedEntities(m_Powerups);
     }
 
     private void spawnEnemyProjectile(DestructibleEntity projectile) {

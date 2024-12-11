@@ -4,6 +4,7 @@ import java.util.*;
 
 import com.example.demo.entities.DestructibleEntity;
 import com.example.demo.entities.UserPlane;
+import com.example.demo.gui.EndMenu;
 import com.example.demo.gui.LevelView;
 import com.example.demo.handlers.CollisionHandler;
 import com.example.demo.handlers.ControlsHandler;
@@ -37,21 +38,21 @@ public abstract class LevelParent extends Observable {
 		this.m_Root = new Group();
 		this.m_Scene = new Scene(m_Root, screenWidth, screenHeight);
 		this.m_Timeline = new Timeline();
-		this.m_CollisionHandler = new CollisionHandler();
+		this.m_LevelView = instantiateLevelView();
+		this.m_CollisionHandler = new CollisionHandler(m_LevelView);
 		this.m_DestructibleEntityHandler = new DestructibleEntityHandler(m_Root, playerInitialHealth);
 		this.m_ControlsHandler = new ControlsHandler(this);
 		this.m_Background = new ImageView(new Image(Objects.requireNonNull(getClass().getResource(backgroundImageName)).toExternalForm()));
 		this.m_ScreenHeight = screenHeight;
 		this.m_ScreenWidth = screenWidth;
 		this.m_EnemyMaximumYPosition = screenHeight - SCREEN_HEIGHT_ADJUSTMENT;
-		this.m_LevelView = instantiateLevelView();
 		this.m_CurrentNumberOfEnemies = 0;
 		initializeTimeline();
 	}
 
 	public Scene initializeScene() {
 		initializeBackground();
-		m_ControlsHandler.createControlsListeners(m_Scene, getUser(), m_Timeline);
+		m_ControlsHandler.createControlsListeners(m_Scene, getUser());
 		initializeFriendlyUnits();
 		m_LevelView.showHeartDisplay();
 		return m_Scene;
@@ -82,16 +83,26 @@ public abstract class LevelParent extends Observable {
 
 	protected abstract void spawnEnemyUnits();
 
+	protected abstract void spawnPowerups();
+
 	protected abstract LevelView instantiateLevelView();
 
 	protected void winGame() {
 		m_Timeline.stop();
-		m_LevelView.showWinImage();
+		EndMenu.showEndMenu(m_Root, true);
 	}
 
 	protected void loseGame() {
 		m_Timeline.stop();
-		m_LevelView.showGameOverImage();
+		EndMenu.showEndMenu(m_Root, false);
+	}
+
+	public void pauseGame() {
+		m_Timeline.pause();
+	}
+
+	public void resumeGame() {
+		m_Timeline.play();
 	}
 
 	protected boolean isUserDestroyed() {
@@ -120,6 +131,7 @@ public abstract class LevelParent extends Observable {
 
 	private void updateScene() {
 		spawnEnemyUnits();
+		spawnPowerups();
 		m_DestructibleEntityHandler.updateEntity();
 		m_DestructibleEntityHandler.generateEnemyFire();
 		updateNumberOfEnemies();
@@ -127,6 +139,7 @@ public abstract class LevelParent extends Observable {
 		m_CollisionHandler.handleUserProjectileCollisions(m_DestructibleEntityHandler.getUserProjectiles(), m_DestructibleEntityHandler.getEnemyUnits());
 		m_CollisionHandler.handleEnemyProjectileCollisions(m_DestructibleEntityHandler.getEnemyProjectiles(), m_DestructibleEntityHandler.getFriendlyUnits());
 		m_CollisionHandler.handlePlaneCollisions(m_DestructibleEntityHandler.getFriendlyUnits(), m_DestructibleEntityHandler.getEnemyUnits());
+		m_CollisionHandler.handlePowerupCollisions(m_DestructibleEntityHandler.getPowerups(), getUser());
 		m_DestructibleEntityHandler.removeAllDestroyedEntities();
 		updateKillCount();
 		updateLevelView();

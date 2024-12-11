@@ -2,7 +2,7 @@ package com.example.demo.entities;
 
 public abstract class FighterPlane extends DestructibleEntity {
 
-	private int m_Health;
+	protected int m_Health;
 
 	public FighterPlane(String imageName, int imageHeight, double initialXPos, double initialYPos, int health) {
 		super(imageName, imageHeight, initialXPos, initialYPos);

@@ -6,6 +6,7 @@ import com.example.demo.entities.Boss;
 public class LevelTwo extends LevelParent {
 
 	private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background2.jpg";
+	private static final String NEXT_LEVEL = "com.example.demo.levels.LevelThree";
 	private static final int PLAYER_INITIAL_HEALTH = 5;
 	private final Boss m_Boss;
 
@@ -24,7 +25,7 @@ public class LevelTwo extends LevelParent {
 		if (isUserDestroyed()) {
 			loseGame();
 		} else if (m_Boss.isDestroyed()) {
-			winGame();
+			goToNextLevel(NEXT_LEVEL);
 		}
 	}
 
@@ -34,6 +35,11 @@ public class LevelTwo extends LevelParent {
 			getEntityHandler().addEnemyUnit(m_Boss);
 			getRoot().getChildren().add(m_Boss.getShieldImage());
 		}
+	}
+
+	@Override
+	protected void spawnPowerups() {
+		// No powerups in this level
 	}
 
 	@Override

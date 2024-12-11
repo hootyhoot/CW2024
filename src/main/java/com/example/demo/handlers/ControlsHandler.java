@@ -17,14 +17,14 @@ public class ControlsHandler {
         this.m_LevelParent = levelParent;
     }
 
-    public void createControlsListeners(Scene scene, UserPlane user, Timeline timeline) {
+    public void createControlsListeners(Scene scene, UserPlane user) {
         scene.setOnKeyPressed(e -> {
             KeyCode kc = e.getCode();
             pressedKeys.add(kc);
             updateMovement(user);
             if (kc == KeyCode.SPACE) m_LevelParent.fireProjectile();
-            if (kc == KeyCode.ESCAPE) timeline.pause();
-            if (kc == KeyCode.ENTER) timeline.play();
+            if (kc == KeyCode.ESCAPE) m_LevelParent.pauseGame();
+            if (kc == KeyCode.ENTER) m_LevelParent.resumeGame();
         });
         scene.setOnKeyReleased(e -> {
             KeyCode kc = e.getCode();

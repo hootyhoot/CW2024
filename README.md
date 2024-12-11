@@ -3,7 +3,7 @@
 - javadocs over each class and method
 - 5-7 tests min (game logic not gui eg testing data comms between functions, conditions for level up)
 - add playable level(s)
-- menu and pause screen
+- mainMenu and pause screen
 - creative additions (eg powerups, different enemies, leaderboard saving?)
 - scrolling background?
 
@@ -20,7 +20,7 @@
 - Resume button resumes after loss screen for one frame at a time
 
 # Features Not Implemented
-- Main menu, pause menu and loss restart buttons
+- Main mainMenu, pause mainMenu and loss restart buttons
 - 2 additional levels
 
 # New Java Classes
