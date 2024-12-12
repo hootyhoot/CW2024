@@ -9,6 +9,9 @@ import java.util.List;
 
 /**
  * Handles collisions between various entities in the game.
+ * Manages collision detection and response for friendly units, enemy units, projectiles, and powerups.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/handlers/CollisionHandler.java">Source code</a>
  */
 public class CollisionHandler {
 

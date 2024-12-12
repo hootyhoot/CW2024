@@ -12,13 +12,30 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Test class for the CollisionHandler.
+ * <p>
+ * This class contains unit tests for the CollisionHandler class, which handles various collision scenarios
+ * in the game, such as plane collisions, projectile collisions, and powerup collisions.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/test/java/com/example/demo/handlers/CollisionHandlerTest.java">Source code</a>
+ */
 class CollisionHandlerTest {
 
+    /**
+     * Initializes the JavaFX platform for testing.
+     */
     @BeforeAll
     public static void initJFX() {
         Platform.startup(() -> {});
     }
 
+    /**
+     * Tests the handling of plane collisions.
+     * <p>
+     * This test verifies that when a friendly plane collides with an enemy plane, the friendly plane's health
+     * is reduced, and the enemy plane is destroyed.
+     */
     @Test
     void testHandlePlaneCollisions() {
         LevelView levelView = new LevelView(new Group(), 3);
@@ -38,6 +55,12 @@ class CollisionHandlerTest {
         assertTrue(enemy.isDestroyed());
     }
 
+    /**
+     * Tests the handling of user projectile collisions.
+     * <p>
+     * This test verifies that when a user projectile collides with an enemy plane, both the projectile and
+     * the enemy plane are destroyed.
+     */
     @Test
     void testHandleUserProjectileCollisions() {
         LevelView levelView = new LevelView(new Group(), 3);
@@ -57,6 +80,12 @@ class CollisionHandlerTest {
         assertTrue(enemy.isDestroyed());
     }
 
+    /**
+     * Tests the handling of enemy projectile collisions.
+     * <p>
+     * This test verifies that when an enemy projectile collides with a friendly plane, the projectile is
+     * destroyed, and the friendly plane's health is reduced.
+     */
     @Test
     void testHandleEnemyProjectileCollisions() {
         LevelView levelView = new LevelView(new Group(), 3);
@@ -76,6 +105,11 @@ class CollisionHandlerTest {
         assertEquals(2, friendly.getHealth());
     }
 
+    /**
+     * Tests the handling of enemy penetration.
+     * <p>
+     * This test verifies that when an enemy plane penetrates the screen boundary, it is destroyed.
+     */
     @Test
     void testHandleEnemyPenetration() {
         LevelView levelView = new LevelView(new Group(), 3);
@@ -93,6 +127,11 @@ class CollisionHandlerTest {
         assertTrue(enemy.isDestroyed());
     }
 
+    /**
+     * Tests the handling of powerup collisions.
+     * <p>
+     * This test verifies that when a user plane collides with a powerup, the powerup is destroyed.
+     */
     @Test
     void testHandlePowerupCollisions() {
         LevelView levelView = new LevelView(new Group(), 3);

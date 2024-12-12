@@ -7,6 +7,8 @@ import javafx.stage.Stage;
 
 /**
  * Main class that serves as the entry point for the JavaFX application.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/controller/Main.java">Source code</a>
  */
 public class Main extends Application {
 

@@ -6,6 +6,8 @@ import com.example.demo.entities.Boss;
 /**
  * Represents the fourth level of the game.
  * This class extends `LevelParent` and sets up the specific parameters and behaviors for level four.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/levels/LevelFour.java">Source code</a>
  */
 public class LevelFour extends LevelParent {
 

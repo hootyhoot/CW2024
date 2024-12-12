@@ -10,6 +10,9 @@ import java.util.Set;
 
 /**
  * Handles user controls for the game.
+ * Manages the creation of control listeners and updates the user plane's movement based on key presses.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/handlers/ControlsHandler.java">Source code</a>
  */
 public class ControlsHandler {
     /**

@@ -2,6 +2,8 @@ package com.example.demo.entities;
 
 /**
  * Represents a projectile fired by the user in the game.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/entities/UserProjectile.java">Source code</a>
  */
 public class UserProjectile extends Projectile {
 

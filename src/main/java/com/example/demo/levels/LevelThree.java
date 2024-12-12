@@ -5,6 +5,8 @@ import com.example.demo.gui.LevelView;
 /**
  * Represents the third level of the game.
  * This class extends `LevelParent` and sets up the specific parameters and behaviors for level three.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/levels/LevelThree.java">Source code</a>
  */
 public class LevelThree extends LevelParent {
 

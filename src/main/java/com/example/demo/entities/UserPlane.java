@@ -2,6 +2,8 @@ package com.example.demo.entities;
 
 /**
  * Represents the user's plane in the game.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/entities/UserPlane.java">Source code</a>
  */
 public class UserPlane extends FighterPlane {
 
@@ -100,10 +102,26 @@ public class UserPlane extends FighterPlane {
 		return m_NumberOfKills;
 	}
 
+	/**
+	 * Returns the horizontal velocity multiplier of the user's plane.
+	 * <p>
+	 * This method retrieves the current horizontal velocity multiplier, which indicates the direction and speed
+	 * of the user's plane's horizontal movement.
+	 *
+	 * @return the horizontal velocity multiplier
+	 */
 	public int getHorizontalVelocityMultiplier() {
 		return m_HorizontalVelocityMultiplier;
 	}
 
+	/**
+	 * Returns the vertical velocity multiplier of the user's plane.
+	 * <p>
+	 * This method retrieves the current vertical velocity multiplier, which indicates the direction and speed
+	 * of the user's plane's vertical movement.
+	 *
+	 * @return the vertical velocity multiplier
+	 */
 	public int getVerticalVelocityMultiplier() {
 		return m_VerticalVelocityMultiplier;
 	}

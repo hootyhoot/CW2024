@@ -4,6 +4,9 @@ import javafx.stage.Stage;
 
 /**
  * Represents a window in the application.
+ * Manages the creation and retrieval of the window stage.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/gui/Window.java">Source code</a>
  */
 public class Window {
     /**

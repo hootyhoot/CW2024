@@ -5,6 +5,8 @@ import com.example.demo.gui.LevelView;
 /**
  * Represents the first level of the game.
  * This class extends `LevelParent` and sets up the specific parameters and behaviors for level one.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/levels/LevelOne.java">Source code</a>
  */
 public class LevelOne extends LevelParent {
 

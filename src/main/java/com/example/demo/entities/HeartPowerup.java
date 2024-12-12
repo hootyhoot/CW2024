@@ -4,6 +4,8 @@ import com.example.demo.gui.LevelView;
 
 /**
  * Represents a heart power-up in the game.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/entities/HeartPowerup.java">Source code</a>
  */
 public class HeartPowerup extends Powerup {
 

@@ -5,6 +5,8 @@ import com.example.demo.entities.DestructibleEntity;
 /**
  * Represents an interface for enemy entities.
  * This interface defines methods for managing enemy units.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/EnemyInterface.java">Source code</a>
  */
 public interface EnemyInterface {
 

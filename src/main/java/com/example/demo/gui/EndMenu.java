@@ -13,6 +13,8 @@ import java.util.logging.Logger;
 
 /**
  * Represents the end menu in the game.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/gui/EndMenu.java">Source code</a>
  */
 public class EndMenu {
     /**

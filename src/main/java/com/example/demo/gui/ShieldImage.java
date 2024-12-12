@@ -8,6 +8,8 @@ import java.util.Objects;
 /**
  * Represents an image of a shield in the GUI.
  * Extends the `ImageView` class to display the shield image.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/gui/ShieldImage.java">Source code</a>
  */
 public class ShieldImage extends ImageView {
 

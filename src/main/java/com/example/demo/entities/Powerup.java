@@ -4,6 +4,8 @@ import com.example.demo.gui.LevelView;
 
 /**
  * Represents a power-up in the game.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/entities/Powerup.java">Source code</a>
  */
 public abstract class Powerup extends DestructibleEntity {
 

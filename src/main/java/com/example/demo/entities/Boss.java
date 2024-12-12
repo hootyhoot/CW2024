@@ -7,6 +7,8 @@ import java.util.*;
 /**
  * Represents a Boss entity in the game, which is a type of FighterPlane.
  * The Boss has a shield, a specific move pattern, and can fire projectiles.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/entities/Boss.java">Source code</a>
  */
 public class Boss extends FighterPlane {
 
@@ -277,7 +279,7 @@ public class Boss extends FighterPlane {
 	/**
 	 * Deactivates the shield for the Boss.
 	 */
-	private void deactivateShield() {
+    void deactivateShield() {
 		m_IsShielded = false;
 		m_Shield.hideShield();
 		m_FramesWithShieldActivated = 0;

@@ -7,6 +7,8 @@ import java.util.Objects;
 
 /**
  * Represents an image used as a button in the GUI.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/gui/ButtonImage.java">Source code</a>
  */
 public class ButtonImage extends ImageView {
 

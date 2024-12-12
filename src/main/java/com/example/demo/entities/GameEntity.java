@@ -5,6 +5,8 @@ import java.util.Objects;
 
 /**
  * Represents a game entity with an image.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/entities/GameEntity.java">Source code</a>
  */
 public abstract class GameEntity extends ImageView {
 

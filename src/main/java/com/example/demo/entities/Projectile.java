@@ -2,6 +2,8 @@ package com.example.demo.entities;
 
 /**
  * Represents a projectile in the game.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/entities/Projectile.java">Source code</a>
  */
 public abstract class Projectile extends DestructibleEntity {
 

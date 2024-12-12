@@ -19,6 +19,9 @@ import javafx.util.Duration;
 
 /**
  * Represents a parent class for game levels.
+ * Manages the initialization, updating, and control of game levels, including spawning enemies and powerups, handling collisions, and managing the game loop.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/levels/LevelParent.java">Source code</a>
  */
 public abstract class LevelParent extends Observable {
 

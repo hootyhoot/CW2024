@@ -2,6 +2,8 @@ package com.example.demo.entities;
 
 /**
  * Represents a fighter plane in the game.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/entities/FighterPlane.java">Source code</a>
  */
 public abstract class FighterPlane extends DestructibleEntity {
 

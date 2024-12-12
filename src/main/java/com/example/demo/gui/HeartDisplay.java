@@ -7,7 +7,9 @@ import javafx.scene.layout.HBox;
 import java.util.Objects;
 
 /**
- * Represents a display of hearts in the GUI.
+ * Represents a display of user health/hearts in the GUI.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/gui/HeartDisplay.java">Source code</a>
  */
 public class HeartDisplay {
 

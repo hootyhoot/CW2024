@@ -10,6 +10,9 @@ import java.util.List;
 
 /**
  * Handles destructible entities in the game.
+ * Manages the creation, updating, and removal of friendly units, enemy units, projectiles, and powerups.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/handlers/DestructibleEntityHandler.java">Source code</a>
  */
 public class DestructibleEntityHandler implements EnemyInterface {
 

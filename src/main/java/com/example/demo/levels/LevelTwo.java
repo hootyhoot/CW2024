@@ -6,6 +6,8 @@ import com.example.demo.entities.Boss;
 /**
  * Represents the second level of the game.
  * This class extends `LevelParent` and sets up the specific parameters and behaviors for level two.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/levels/LevelTwo.java">Source code</a>
  */
 public class LevelTwo extends LevelParent {
 

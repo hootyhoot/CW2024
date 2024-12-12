@@ -4,6 +4,8 @@ import com.example.demo.DestructibleInterface;
 
 /**
  * Represents an entity in the game that can be destroyed.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/entities/DestructibleEntity.java">Source code</a>
  */
 public abstract class DestructibleEntity extends GameEntity implements DestructibleInterface {
 

@@ -27,17 +27,18 @@
    ```
 
 # Implemented and Working Correctly
+- Vertical, Horizontal, Diagonal Movement: User can move the plane horizontally and vertically or both.
 - Hitboxes improved for all entities: Enhanced collision detection for more accurate gameplay.
 - Shield capability for boss: Bosses can now activate shields for protection.
 - Powerups (health powerup): Users can collect health powerups to regain health.
 - Main Menu: A main menu to start or exit the game.
+- Pause Functionality: Users can pause the game and resume using ESC and ENTER respectively.
 - End game Menu: Dynamic end game menu that changes based on win or lose conditions.
 - Level 3: More challenging level with more enemies, higher enemy shooting rate, less user health, and many health powerups available.
 - Level 4: Final level with 3 bosses, higher enemy fire rate, and fewer health powerups available.
 
 # Implemented but Not Working Correctly
 - Resume button: Resumes game even after loss screen is shown by one frame at a time. (Possible issue with clearing the root)
-- UserPlane movement: UserPlane can move in all directions, but holding left and then right momentarily stops it, and holding down and then up momentarily stops it. (Issue with ControlsHandler)
 
 # Features Not Implemented
 - Scrolling background: Not implemented due to time constraints and complexity.
@@ -56,6 +57,12 @@
 - EndMenu Class: Singleton class to show the end menu. Located in src/main/java/com/example/demo/gui.
 - Powerup Class: Abstract class for defining powerup entities. Located in src/main/java/com/example/demo/entities.
 - HeartPowerup Class: Extends Powerup class, defines heart powerup entity. Located in src/main/java/com/example/demo/entities.
+- BossTest Class: JUnit test class for Boss class. Located in src/test/java/com/example/demo/entities.
+- UserPlaneTest Class: JUnit test class for UserPlane class. Located in src/test/java/com/example/demo/entities.
+- ShieldImageTest Class: JUnit test class for ShieldImage class. Located in src/test/java/com/example/demo/gui.
+- WindowTest Class: JUnit test class for Window class. Located in src/test/java/com/example/demo/gui.
+- CollisionHandlerTest Class: JUnit test class for CollisionHandler class. Located in src/test/java/com/example/demo/handlers.
+- DestroyableEntityHandlerTest Class: JUnit test class for DestructibleEntityHandler class. Located in src/test/java/com/example/demo/handlers.
 
 # Modified Java Classes
 
@@ -71,7 +78,43 @@
 - set local variables to final if they are not reassigned
 - removed unused imports
 - setting fields to local variables
-- added javadocs to classes and methods
+- added javadocs to all classes, methods and fields
+- added javadocs github source code reference for each class
+
+### BossTest Class
+- test of the boss taking damage
+- test of boss activating shield
+
+### UserPlaneTest Class
+- test of user plane initialisation and initial health
+- test of user plane movements in all directions and stopping for both axes
+- test of user plane firing projectiles
+- test of user plane gaining health
+- test of user plane incrementing kill count
+
+### ShieldImageTest Class
+- test of shield image initialisation
+- test of shield image activation and deactivation
+
+### WindowTest Class
+- test of window initialisation
+- test of window singleton pattern
+
+### CollisionHandlerTest Class
+- test of collision detection between user and enemy
+- test of collision detection between user and enemy projectiles
+- test of collision detection between user and powerups
+- test of collision detection between enemy and user projectiles
+
+### DestructibleEntityHandlerTest Class
+- test of adding enemy units
+- test of adding powerups
+- test of generating enemy projectiles
+- test of updating entities
+- test of removing all destroyed entities
+- test of getting all current enemies
+- test of getting all powerups
+- test of getting user plane instance
 
 ### Main Class
 - added window class instance to initialise the stage or window

@@ -2,6 +2,8 @@ package com.example.demo.entities;
 
 /**
  * Represents an enemy plane in the game.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/entities/EnemyPlane.java">Source code</a>
  */
 public class EnemyPlane extends FighterPlane {
 

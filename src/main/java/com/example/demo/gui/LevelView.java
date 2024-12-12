@@ -3,7 +3,9 @@ package com.example.demo.gui;
 import javafx.scene.Group;
 
 /**
- * Represents the view for a level in the game.
+ * Represents the view/user interface for a level in the game.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/gui/LevelView.java">Source code</a>
  */
 public class LevelView {
 

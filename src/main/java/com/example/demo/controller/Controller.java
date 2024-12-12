@@ -14,6 +14,8 @@ import com.example.demo.levels.LevelParent;
 /**
  * Controller class that manages the game flow and transitions between levels.
  * Implements the Observer interface to respond to level changes.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/controller/Controller.java">Source code</a>
  */
 public class Controller implements Observer {
 

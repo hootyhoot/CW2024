@@ -2,6 +2,8 @@ package com.example.demo.entities;
 
 /**
  * Represents a projectile fired by an enemy plane.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/entities/EnemyProjectile.java">Source code</a>
  */
 public class EnemyProjectile extends Projectile {
 

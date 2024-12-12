@@ -18,6 +18,8 @@ import java.util.logging.Logger;
 /**
  * Represents the main menu of the GUI.
  * Manages the initialization and display of the main menu, including background and buttons.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/gui/MainMenu.java">Source code</a>
  */
 public class MainMenu {
     /**
@@ -116,6 +118,13 @@ public class MainMenu {
         return m_MainMenu;
     }
 
+    /**
+     * Returns the root group of the main menu.
+     * <p>
+     * This method retrieves the root group, which contains all the elements of the main menu.
+     *
+     * @return the root group of the main menu
+     */
     public Group getRoot() {
         return m_Root;
     }

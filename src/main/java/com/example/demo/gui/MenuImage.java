@@ -8,6 +8,8 @@ import java.util.Objects;
 /**
  * Represents an image of the menu of the GUI.
  * Extends the `ImageView` class to display the menu image.
+ *
+ * @see <a href="https://github.com/hootyhoot/CW2024/blob/master/src/main/java/com/example/demo/gui/MenuImage.java">Source code</a>
  */
 public class MenuImage extends ImageView {
 
