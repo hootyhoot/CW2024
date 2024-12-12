@@ -1,11 +1,16 @@
-## TODO
-- projectiles shoot enemies outside of screen
-- javadocs over each class and method
-- 5-7 tests min (game logic not gui eg testing data comms between functions, conditions for level up)
-- add playable level(s)
-- scrolling background?
+# Table of Contents
+- [Github](#github)
+- [Compilation Instructions](#compilation-instructions)
+- [Implemented and Working Correctly](#implemented-and-working-correctly)
+- [Implemented but Not Working Correctly](#implemented-but-not-working-correctly)
+- [Features Not Implemented](#features-not-implemented)
+- [New Java Classes](#new-java-classes)
+- [Modified Java Classes](#modified-java-classes)
+   - [Removals](#removals)
+- [Unexpected Problems](#unexpected-problems)
 
-# Github - https://github.com/hootyhoot/CW2024
+# Github
+### https://github.com/hootyhoot/CW2024
 
 # Compilation Instructions
 1. Ensure you have Java and Maven installed on your system.
@@ -36,6 +41,7 @@
 - End game Menu: Dynamic end game menu that changes based on win or lose conditions.
 - Level 3: More challenging level with more enemies, higher enemy shooting rate, less user health, and many health powerups available.
 - Level 4: Final level with 3 bosses, higher enemy fire rate, and fewer health powerups available.
+- JUnit Tests: Added JUnit tests for Boss, UserPlane, ShieldImage, Window, CollisionHandler, and DestructibleEntityHandler classes.
 
 # Implemented but Not Working Correctly
 - Resume button: Resumes game even after loss screen is shown by one frame at a time. (Possible issue with clearing the root)
@@ -234,4 +240,4 @@
 # Unexpected Problems
 - Resume button issue: Resumes game even after loss screen is shown by one frame at a time. Attempted to clear root but issue persists.
 - UserPlane movement issue: Holding left and then right momentarily stops it, and holding down and then up momentarily stops it. Adjusted ControlsHandler but issue persists
-- JUnit Test Dependencies: The JUnit testing dependencies were not resolving correctly and the tests could not compile.
+- JUnit Test Dependencies: The JUnit testing dependencies were not resolving correctly and the tests could not compile. (Fixed by adding the correct dependencies to the pom.xml and module-info files)
