@@ -11,7 +11,7 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage stage) throws  SecurityException, IllegalArgumentException {
-		Window window = Window.getInstance();
+		Window window = Window.getWindow();
 		stage = window.getStage();
 		MainMenu mainMenu = MainMenu.getMenu(stage);
 		mainMenu.initialiseMenu();

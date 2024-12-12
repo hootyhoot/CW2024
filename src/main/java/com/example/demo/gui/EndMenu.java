@@ -69,7 +69,7 @@ public class EndMenu {
         root.getChildren().clear();
         m_BackgroundImage = null;
         m_RestartButton = null;
-        MainMenu Restart = MainMenu.getMenu(Window.getInstance().getStage());
+        MainMenu Restart = MainMenu.getMenu(Window.getWindow().getStage());
         Restart.startGame();
     }
 
