@@ -5,13 +5,22 @@ import javafx.scene.image.ImageView;
 
 import java.util.Objects;
 
+/**
+ * Represents an image used as a button in the GUI.
+ */
 public class ButtonImage extends ImageView {
 
-    public ButtonImage(String IMAGE_NAME,double SizeH, double SizeW ) {
+    /**
+     * Constructs a ButtonImage with the specified image name, height, and width.
+     *
+     * @param IMAGE_NAME the name of the image file
+     * @param SizeH the height of the image
+     * @param SizeW the width of the image
+     */
+    public ButtonImage(String IMAGE_NAME, double SizeH, double SizeW) {
         setImage(new Image(Objects.requireNonNull(getClass().getResource(IMAGE_NAME)).toExternalForm()));
         setVisible(true);
         setFitHeight(SizeH);
         setFitWidth(SizeW);
     }
 }
-

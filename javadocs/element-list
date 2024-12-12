@@ -1,0 +1,7 @@
+module:com.example.demo
+com.example.demo
+com.example.demo.controller
+com.example.demo.entities
+com.example.demo.gui
+com.example.demo.handlers
+com.example.demo.levels

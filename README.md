@@ -8,35 +8,54 @@
 # Github - https://github.com/hootyhoot/CW2024
 
 # Compilation Instructions
+1. Ensure you have Java and Maven installed on your system.
+2. Clone the repository:
+   ```sh
+   git clone https://github.com/hootyhoot/CW2024.git
+    ```
+3. Navigate to the project directory:
+   ```sh
+   cd CW2024
+   ```
+4. Compile the project:
+   ```sh
+   mvn clean install
+   ```
+5. Run the project:
+   ```sh
+   mvnn exec:java -Dexec.mainClass="com.example.demo.Main"
+   ```
 
 # Implemented and Working Correctly
-- Hitboxes improved for all entities 
-- Shield capability for boss
-- Powerups for user (health powerup)
-- Main Menu
-- End game Menu (For both Win/Lose, dynamically changes menu)
-- Level 3 (More enemies, higher enemy shooting rate, less user health, health powerup available)
+- Hitboxes improved for all entities: Enhanced collision detection for more accurate gameplay.
+- Shield capability for boss: Bosses can now activate shields for protection.
+- Powerups (health powerup): Users can collect health powerups to regain health.
+- Main Menu: A main menu to start or exit the game.
+- End game Menu: Dynamic end game menu that changes based on win or lose conditions.
+- Level 3: More challenging level with more enemies, higher enemy shooting rate, less user health, and many health powerups available.
+- Level 4: Final level with 3 bosses, higher enemy fire rate, and fewer health powerups available.
 
 # Implemented but Not Working Correctly
-- Resume button resumes game even after loss screen shown by one frame at a time. (Clear root?)
-- UserPlane can move left, right, up, down but holding left and then right momentarily stops it, holding down and then up momentarily stops it. (ControlsHandler)
+- Resume button: Resumes game even after loss screen is shown by one frame at a time. (Possible issue with clearing the root)
+- UserPlane movement: UserPlane can move in all directions, but holding left and then right momentarily stops it, and holding down and then up momentarily stops it. (Issue with ControlsHandler)
 
 # Features Not Implemented
-- Scrolling background
+- Scrolling background: Not implemented due to time constraints and complexity.
 
 # New Java Classes
-- CollisionHandler Class
-- ControlsHandler Class
-- DestructibleEntityHandler Class
-- EnemyInterface Class
-- LevelThree Class
-- Window Class
-- MenuImage Class
-- ButtonImage Class
-- MainMenu Class
-- EndMenu Class
-- Powerup Class
-- HeartPowerup Class
+- CollisionHandler Class: Handles collision detection logic. Located in src/main/java/com/example/demo/handlers.
+- ControlsHandler Class: Manages user input and controls. Located in src/main/java/com/example/demo/handlers.
+- DestructibleEntityHandler Class: Manages destructible entities. Located in src/main/java/com/example/demo/handlers.
+- EnemyInterface Class: Defines contract for managing enemy entities. Located in src/main/java/com/example/demo
+- LevelThree Class: Implements the third level of the game. Located in src/main/java/com/example/demo/levels.
+- LevelFour Class: Implements the fourth level of the game. Located in src/main/java/com/example/demo/levels.
+- Window Class: Singleton class to initialize the window. Located in src/main/java/com/example/demo/gui.
+- MenuImage Class: ImageView class for menu background images. Located in src/main/java/com/example/demo/gui.
+- ButtonImage Class: ImageView class for menu button images. Located in src/main/java/com/example/demo/gui.
+- MainMenu Class: Singleton class to show the main menu. Located in src/main/java/com/example/demo/gui.
+- EndMenu Class: Singleton class to show the end menu. Located in src/main/java/com/example/demo/gui.
+- Powerup Class: Abstract class for defining powerup entities. Located in src/main/java/com/example/demo/entities.
+- HeartPowerup Class: Extends Powerup class, defines heart powerup entity. Located in src/main/java/com/example/demo/entities.
 
 # Modified Java Classes
 
@@ -52,6 +71,7 @@
 - set local variables to final if they are not reassigned
 - removed unused imports
 - setting fields to local variables
+- added javadocs to classes and methods
 
 ### Main Class
 - added window class instance to initialise the stage or window
@@ -147,14 +167,28 @@
 - added controlsHandler instance to handle user input
 - added collisionHandler instance to handle collision detection
 - added destructibleEntityHandler instance to handle destructible entities
+- moved up default spawnEnemyUnits function implementation here
+- moved up default spawnPowerups function implementation here
+
+### LevelOne Class
+- introduced fire rate constant
+- edited spawnEnemyUnits function to call new enemy plane constructor with fire rate argument
+- overrode spawnPowerups function to not spawn powerups in level one
 
 ### LevelTwo Class
 - changed LevelViewLevelTwo instance to LevelView after refactoring of it
 - called and added shieldimage to root in spawnenemyunits function using getter from boss class
+- overrode spawnPowerups function to not spawn powerups in level two
 
 ### LevelThree Class
 - added LevelThree class to implement harder level
 - more enemies, higher enemy shooting rate, less user health, and health powerup available
 
-# Unexpected Problems
+### LevelFour Class
+- added LevelFour class to implement final level
+- 3 bosses, higher boss fire rate, less health powerups available
 
+# Unexpected Problems
+- Resume button issue: Resumes game even after loss screen is shown by one frame at a time. Attempted to clear root but issue persists.
+- UserPlane movement issue: Holding left and then right momentarily stops it, and holding down and then up momentarily stops it. Adjusted ControlsHandler but issue persists
+- JUnit Test Dependencies: The JUnit testing dependencies were not resolving correctly and the tests could not compile.
