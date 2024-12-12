@@ -115,7 +115,6 @@
 ### DestructibleEntityHandlerTest Class
 - test of adding enemy units
 - test of adding powerups
-- test of generating enemy projectiles
 - test of updating entities
 - test of removing all destroyed entities
 - test of getting all current enemies

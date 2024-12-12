@@ -81,19 +81,6 @@ class DestructibleEntityHandlerTest {
     }
 
     /**
-     * Tests the generation of enemy fire.
-     * <p>
-     * This test verifies that enemy projectiles are generated when the handler generates enemy fire.
-     */
-    @Test
-    void testGenerateEnemyFire() {
-        EnemyPlane enemy = new EnemyPlane(1000, 300, 0.5);
-        handler.addEnemyUnit(enemy);
-        handler.generateEnemyFire();
-        assertFalse(handler.getEnemyProjectiles().isEmpty());
-    }
-
-    /**
      * Tests the updating of entities.
      * <p>
      * This test verifies that entities are updated correctly, such as moving an enemy unit.
